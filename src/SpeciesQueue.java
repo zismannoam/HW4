@@ -1,6 +1,7 @@
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
-public class SpeciesQueue <T extends Comparable<T>> implements Cloneable {
+public class SpeciesQueue <T extends Comparable<T>> implements Cloneable, Iterable<T> {
     private int queueSize;
     private T[] queueElements;
     public SpeciesQueue(){
@@ -64,5 +65,26 @@ public boolean isEmpty(){
             return null;
         }
         return cloned;
+    }
+
+    private class QueueIterator implements Iterator<T>{
+        private int currentIndex = 0;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex<queueSize;
+        }
+
+        @Override
+        public T next() {
+            T currentElement = queueElements[currentIndex];
+            currentIndex+=1;
+            return currentElement;
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new QueueIterator();
     }
 }
