@@ -61,11 +61,11 @@ public class Main {
 
         // Remove animals from the queue one by one and show the state of the queue after each removal
         System.out.println("\nRemoving animals...");
-        queue.peek();
+        queue.remove();
         showQueueState(queue);
-        queue.peek();
+        queue.remove();
         showQueueState(queue);
-        queue.peek();
+        queue.remove();
         showQueueState(queue);
 
         System.out.println("test_2 finished.");
@@ -88,9 +88,9 @@ public class Main {
 
         // Remove animals from the queue one by one
         System.out.println("\nRemoving animals...");
-        queue.peek();
+        queue.remove();
         showQueueState(queue);
-        queue.peek();
+        queue.remove();
         showQueueState(queue);
 
         System.out.println("test_3 finished.");
@@ -112,7 +112,7 @@ public class Main {
 
         try {
             // Try removing from an empty queue (this should throw an EmptyQueueException)
-            queue.peek();
+            queue.remove();
         } catch (EmptyQueueException e) {
             System.out.println("Caught EmptyQueueException while removing from empty queue");
         }
@@ -164,7 +164,7 @@ public class Main {
         showQueueState(clonedQueue);
 
         // Remove an animal from the cloned queue and show the state again
-        clonedQueue.peek();
+        clonedQueue.remove();
         System.out.println("Cloned queue after removal:");
         showQueueState(clonedQueue);
 
