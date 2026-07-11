@@ -8,5 +8,10 @@ public abstract  class Animal implements Comparable<Animal> {
     public int compareTo(Animal other) {
         return this.dominanceNumber-other.dominanceNumber;
         }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
+}
 
