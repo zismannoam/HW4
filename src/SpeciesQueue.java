@@ -10,6 +10,10 @@ import java.util.Iterator;
  * @param <T> the type of elements held in this queue
  */
 public class SpeciesQueue <T extends Comparable<T>> implements Cloneable, Iterable<T> {
+    /** The initial capacity of the backing array. */
+    private static final int INITIAL_CAPACITY = 10;
+    /** The factor by which the backing array grows when full. */
+    private static final int GROWTH_FACTOR = 2;
     /** The number of elements currently in the queue. */
     private int queueSize;
     /** The array holding the queue elements. */
@@ -17,7 +21,7 @@ public class SpeciesQueue <T extends Comparable<T>> implements Cloneable, Iterab
     /** Constructs an empty queue with an initial capacity. */
     public SpeciesQueue(){
         this.queueSize = 0;
-        queueElements = (T[]) (new Comparable[10]);
+        queueElements = (T[]) (new Comparable[INITIAL_CAPACITY]);
     }
     /**
      * Adds an element to the queue in its correct position.
@@ -30,7 +34,7 @@ public class SpeciesQueue <T extends Comparable<T>> implements Cloneable, Iterab
 public void add(T animal) throws InvalidInputException{
         if(animal==null){throw new InvalidInputException();}
         if(queueElements.length==queueSize){
-            T[] tempQueueElements = (T[]) (new Comparable[queueElements.length*2]);
+            T[] tempQueueElements = (T[]) (new Comparable[queueElements.length*GROWTH_FACTOR]);
             for(int j=0; j<queueSize; j++){
                 tempQueueElements[j]=queueElements[j];
             }
